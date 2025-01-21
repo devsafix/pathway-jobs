@@ -20,9 +20,10 @@ const Navbar = () => {
           <a href="/" className="font-bold text-2xl">
             Pathway Jobs
           </a>
-          <div className="md:block hidden space-x-4 text-lg font-medium">
-            <Link href="/about">Login</Link>
-            <Link href="/contact">Register</Link>
+          <div className="md:block hidden space-x-10 text-lg font-medium">
+            <Link href="/">Home</Link>
+            <Link href="/sign-in">Login</Link>
+            <Link href="/sign-up">Register</Link>
           </div>
           <div className="md:hidden block">
             <Sheet>
@@ -34,8 +35,8 @@ const Navbar = () => {
                   <SheetTitle className="mt-5">Pathway Jobs</SheetTitle>
                   <div className="flex justify-start flex-col space-y-2 text-lg font-medium">
                     <Link href="/">Home</Link>
-                    <Link href="/about">Login</Link>
-                    <Link href="/contact">Register</Link>
+                    <Link href="/sign-in">Login</Link>
+                    <Link href="/sign-up">Register</Link>
                   </div>
                 </SheetHeader>
               </SheetContent>
