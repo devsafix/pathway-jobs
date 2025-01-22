@@ -79,15 +79,17 @@ const CommonForm = ({
   };
 
   return (
-    <form action={action}>
-      {formControls.map((control) => renderInputByComponentType(control))}
-      <div className="mt-6 w-full">
-        <Button type={btnType || "submit"} disable={isBtnDisabled}>
-          {" "}
-          {buttonText}{" "}
-        </Button>
-      </div>
-    </form>
+    <div>
+      <form action={action}>
+        {formControls.map((control) => renderInputByComponentType(control))}
+        <div className="mt-6 w-full">
+          <Button type={btnType || "submit"} disable={isBtnDisabled}>
+            {" "}
+            {buttonText}{" "}
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 };
 
