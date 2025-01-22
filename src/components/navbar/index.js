@@ -14,7 +14,7 @@ import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 
 const Navbar = ({ user }) => {
-  console.log(user);
+
 
   return (
     <div>

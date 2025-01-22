@@ -19,7 +19,7 @@ const CommonForm = ({
         content = (
           <>
             <Label
-              for={control.name}
+              htmlFor={control.name}
               className="w-full mt-4 flex flex-col items-start justify-start"
             >
               <h2>{control.label}</h2>
@@ -30,7 +30,7 @@ const CommonForm = ({
               placeholder={control.placeholder}
               name={control.name}
               id={control.id}
-              value={formData[control.name]}
+              value={formData[control.name] || ""} 
               onChange={(e) => {
                 setFormData({
                   ...formData,
@@ -48,7 +48,7 @@ const CommonForm = ({
         content = (
           <>
             <Label
-              for={control.name}
+              htmlFor={control.name}
               className="w-full mt-4 flex flex-col items-start justify-start"
             >
               <h2>{control.label}</h2>
@@ -91,11 +91,18 @@ const CommonForm = ({
   return (
     <div>
       <form action={action} className="w-full">
-        {formControls.map((control) => renderInputByComponentType(control))}
+        {formControls.map((control, index) => (
+          <div key={control.id || control.name || index}>
+            {renderInputByComponentType(control)}
+          </div>
+        ))}
         <div className="mt-6 w-full">
-          <Button type={btnType || "submit"} disable={isBtnDisabled} className="disabled:opacity-50 disabled:cursor-not-allowed">
-            {" "}
-            {buttonText}{" "}
+          <Button
+            type={btnType || "submit"}
+            disable={isBtnDisabled}
+            className="disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {buttonText}
           </Button>
         </div>
       </form>

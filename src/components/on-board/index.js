@@ -10,7 +10,8 @@ import {
   recruiterOnboardFromControls,
 } from "@/utils";
 import { useUser } from "@clerk/nextjs";
-import { createProfile } from "@/actions";
+import { createProfile, getProfile } from "@/actions";
+import { useRouter } from "next/navigation";
 
 const OnBoard = () => {
   const [currentTab, setCurrentTab] = useState("candidate");
@@ -22,6 +23,7 @@ const OnBoard = () => {
   );
 
   const currentAuthUser = useUser();
+  const router = useRouter(); 
 
   const { user } = currentAuthUser;
 
@@ -41,14 +43,6 @@ const OnBoard = () => {
     setCurrentTab(value);
   };
 
-  const handleRecruiterFormValid = () => {
-    return Object.values(recruiterFormData).every((value) => value !== "");
-  };
-
-  const handleCandidateFormValid = () => {
-    return Object.values(candidateFormData).every((value) => value !== "");
-  };
-
   return (
     <div className="w-full">
       <Tabs
@@ -66,7 +60,6 @@ const OnBoard = () => {
             buttonText={"Onboard as candidate"}
             formData={candidateFormData}
             setFormData={setCandidateFormData}
-            isBtnDisabled={!handleCandidateFormValid()}
           />
         </TabsContent>
         <TabsContent value="recruiter" className="mt-4">
@@ -75,7 +68,6 @@ const OnBoard = () => {
             buttonText={"Onboard as recruiter"}
             formData={recruiterFormData}
             setFormData={setRecruiterFormData}
-            isBtnDisabled={!handleRecruiterFormValid()}
             action={createProfileAction}
           />
         </TabsContent>
