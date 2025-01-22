@@ -19,11 +19,16 @@ const OnBoard = () => {
     initialCandidateFormData
   );
 
-  console.log("candidateFormData", candidateFormData );
-  
-
   const handleTabChange = (value) => {
     setCurrentTab(value);
+  };
+
+  const handleRecruiterFormValid = () => {
+    return Object.values(recruiterFormData).every((value) => value !== "");
+  };
+
+  const handleCandidateFormValid = () => {
+    return Object.values(candidateFormData).every((value) => value !== "");
   };
 
   return (
@@ -43,6 +48,7 @@ const OnBoard = () => {
             buttonText={"Onboard as candidate"}
             formData={candidateFormData}
             setFormData={setCandidateFormData}
+            isBtnDisabled={!handleCandidateFormValid()}
           />
         </TabsContent>
         <TabsContent value="recruiter" className="mt-4">
@@ -51,6 +57,7 @@ const OnBoard = () => {
             buttonText={"Onboard as recruiter"}
             formData={recruiterFormData}
             setFormData={setRecruiterFormData}
+            isBtnDisabled={!handleRecruiterFormValid()}
           />
         </TabsContent>
       </Tabs>

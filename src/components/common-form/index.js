@@ -93,7 +93,7 @@ const CommonForm = ({
       <form action={action} className="w-full">
         {formControls.map((control) => renderInputByComponentType(control))}
         <div className="mt-6 w-full">
-          <Button type={btnType || "submit"} disable={isBtnDisabled}>
+          <Button type={btnType || "submit"} disabled={isBtnDisabled} className="disabled:opacity-50 disabled:cursor-not-allowed">
             {" "}
             {buttonText}{" "}
           </Button>
