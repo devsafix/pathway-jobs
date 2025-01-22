@@ -26,4 +26,11 @@ export const createJob = async (formData, pathToRevalidate) => {
   revalidatePath(pathToRevalidate);
 };
 
+// get job for recruiter action
+export const fetchJobsForRecruiter = async (id) => {
+  await connectToDB();
+  const result = await Job.find({ recruiterId: id });
+  return JSON.parse(JSON.stringify(result));
+};
+
 
