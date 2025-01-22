@@ -31,6 +31,11 @@ const PostNewJob = ({ profileInfo, user }) => {
       },
       "/jobs"
     );
+    setShowJobDialog(false);
+    setJobFormData({
+      ...initialPostNewJobFormData,
+      companyName: profileInfo?.recruiterInfo?.companyName,
+    });
   };
   return (
     <>
