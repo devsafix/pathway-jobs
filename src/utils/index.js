@@ -6,14 +6,14 @@ export const recruiterOnboardFromControls = [
     placeholder: "Enter your name",
   },
   {
-    name: "compnayName",
+    name: "companyName",
     label: "Company Name",
     componentType: "input",
     placeholder: "Enter your company name",
   },
   {
     name: "companyRole",
-    label: "Compnay Role",
+    label: "Company Role",
     componentType: "input",
     placeholder: "Enter your company role",
   },
@@ -21,8 +21,8 @@ export const recruiterOnboardFromControls = [
 
 export const initialRecruiterFormData = {
   name: "",
-  compnayName: "",
-  compnayRole: "",
+  companyName: "",
+  companyRole: "",
 };
 
 export const candidateOnboardFromControls = [

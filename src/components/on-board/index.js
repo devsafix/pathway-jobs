@@ -11,7 +11,6 @@ import {
 } from "@/utils";
 import { useUser } from "@clerk/nextjs";
 import { createProfile, getProfile } from "@/actions";
-import { useRouter } from "next/navigation";
 
 const OnBoard = () => {
   const [currentTab, setCurrentTab] = useState("candidate");
@@ -21,9 +20,9 @@ const OnBoard = () => {
   const [candidateFormData, setCandidateFormData] = useState(
     initialCandidateFormData
   );
+console.log(recruiterFormData);
 
   const currentAuthUser = useUser();
-  const router = useRouter(); 
 
   const { user } = currentAuthUser;
 
