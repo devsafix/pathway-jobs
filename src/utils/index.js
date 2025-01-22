@@ -23,6 +23,7 @@ export const initialRecruiterFormData = {
   name: "",
   compnayName: "",
   compnayRole: "",
+  isPremiumUser: false,
 };
 
 export const candidateOnboardFromControls = [
