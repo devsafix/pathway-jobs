@@ -30,7 +30,7 @@ const CommonForm = ({
               placeholder={control.placeholder}
               name={control.name}
               id={control.id}
-              value={formData[control.name] || ""} 
+              value={formData[control.name] || ""}
               onChange={(e) => {
                 setFormData({
                   ...formData,
