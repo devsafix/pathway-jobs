@@ -12,7 +12,11 @@ const JobListing = ({ user, profileInfo }) => {
             : "Jobs dashboard"}
         </h1>
         <div>
-          {profileInfo?.role === "candidate" ? <p>filter</p> : <PostNewJob profileInfo={profileInfo} />}
+          {profileInfo?.role === "candidate" ? (
+            <p>filter</p>
+          ) : (
+            <PostNewJob user={user} profileInfo={profileInfo} />
+          )}
         </div>
       </div>
       <div>job listing</div>

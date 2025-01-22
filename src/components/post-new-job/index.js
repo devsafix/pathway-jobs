@@ -13,14 +13,25 @@ import { Button } from "../ui/button";
 import CommonForm from "../common-form";
 import { useState } from "react";
 import { initialPostNewJobFormData, postNewJobControls } from "@/utils";
+import { postNewJob } from "@/actions";
 
-const PostNewJob = ({ profileInfo }) => {
+const PostNewJob = ({ profileInfo, user }) => {
   const [showJobDialog, setShowJobDialog] = useState(false);
   const [jobFormData, setJobFormData] = useState({
     ...initialPostNewJobFormData,
     companyName: profileInfo?.recruiterInfo?.companyName,
   });
 
+  const createJob = async () => {
+    await postNewJob(
+      {
+        ...jobFormData,
+        recruiterId: user.id,
+        applicants: [],
+      },
+      "/jobs"
+    );
+  };
   return (
     <>
       <div>
@@ -48,6 +59,7 @@ const PostNewJob = ({ profileInfo }) => {
                 formData={jobFormData}
                 setFormData={setJobFormData}
                 formControls={postNewJobControls}
+                action={createJob}
               />
             </div>
           </DialogContent>

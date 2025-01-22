@@ -20,7 +20,7 @@ export const fetchProfileAction = async (id) => {
 };
 
 // create job action
-export const createJob = async (formData, pathToRevalidate) => {
+export const postNewJob = async (formData, pathToRevalidate) => {
   await connectToDB();
   await Job.create(formData);
   revalidatePath(pathToRevalidate);
