@@ -14,14 +14,12 @@ import CommonForm from "../common-form";
 import { useState } from "react";
 import { initialPostNewJobFormData, postNewJobControls } from "@/utils";
 
-const PostNewJob = ({profileInfo}) => {
+const PostNewJob = ({ profileInfo }) => {
   const [showJobDialog, setShowJobDialog] = useState(false);
   const [jobFormData, setJobFormData] = useState({
     ...initialPostNewJobFormData,
     companyName: profileInfo?.recruiterInfo?.companyName,
   });
-
-  
 
   return (
     <>
@@ -31,7 +29,13 @@ const PostNewJob = ({profileInfo}) => {
       <div>
         <Dialog
           open={showJobDialog}
-          onOpenChange={() => setShowJobDialog(false)}
+          onOpenChange={() => {
+            setShowJobDialog(false);
+            setJobFormData({
+              ...initialPostNewJobFormData,
+              companyName: profileInfo?.recruiterInfo?.companyName,
+            });
+          }}
         >
           <DialogContent>
             <DialogHeader>
