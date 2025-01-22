@@ -3,19 +3,15 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { AlignJustify } from "lucide-react";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 
-const Navbar = ({ user }) => {
-
-
+const Navbar = ({ user, profileInfo }) => {
   return (
     <div>
       <div>
@@ -28,7 +24,12 @@ const Navbar = ({ user }) => {
             {user ? (
               <>
                 <Link href="/jobs">Jobs</Link>
-                <Link href="/activity">Activity</Link>
+                {profileInfo?.role === "recruiter" ? (
+                  ""
+                ) : (
+                  <Link href="/activity">Activity</Link>
+                )}
+
                 <Link href="/membership">Membership</Link>
                 <Link href="/account">Account</Link>
               </>

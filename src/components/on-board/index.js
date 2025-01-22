@@ -20,7 +20,7 @@ const OnBoard = () => {
   const [candidateFormData, setCandidateFormData] = useState(
     initialCandidateFormData
   );
-console.log(recruiterFormData);
+  console.log(recruiterFormData);
 
   const currentAuthUser = useUser();
 
