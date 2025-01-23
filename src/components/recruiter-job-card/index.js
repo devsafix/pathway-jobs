@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "../ui/button";
 
-const RecruiterJobCard = ({ job }) => {
+const RecruiterJobCard = ({ job, jobApplicationList }) => {
   return (
     <Card>
       <CardHeader>
@@ -20,7 +20,10 @@ const RecruiterJobCard = ({ job }) => {
       <CardContent>
         <p>{job.location}</p>
         <p>{job.experience}</p>
-        <Button className="mt-5">10 Applicants</Button>
+        <Button className="mt-5">
+          {jobApplicationList?.filter((item) => item.jobId === job?._id).length}{" "}
+          Applicants
+        </Button>
       </CardContent>
     </Card>
   );

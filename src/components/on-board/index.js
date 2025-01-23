@@ -67,7 +67,7 @@ const OnBoard = () => {
     if (file) {
       const uploadImage = async () => {
         const { data, error } = await supabaseClient.storage
-          .from("pathway-job")
+          .from("pathway-job-public")
           .upload(`/public/${file.name}`, file, {
             cacheControl: "3600",
             upsert: false,

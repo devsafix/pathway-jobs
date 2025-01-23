@@ -27,7 +27,6 @@ const CandidateJobCard = ({ job, profileInfo, jobApplicationList }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   console.log(jobApplicationList);
-  
 
   const handleJobApply = async () => {
     await applyForJob(
@@ -66,7 +65,22 @@ const CandidateJobCard = ({ job, profileInfo, jobApplicationList }) => {
           <DrawerTitle className="text-2xl font-bold flex justify-between items-center">
             {job.title}
             <div className="flex items-center gap-2">
-              <Button onClick={handleJobApply}>Apply</Button>
+              <Button
+                onClick={handleJobApply}
+                disabled={
+                  jobApplicationList?.findIndex(
+                    (application) => application.jobId === job._id
+                  ) > -1
+                    ? true
+                    : false
+                }
+              >
+                {jobApplicationList?.findIndex(
+                  (application) => application.jobId === job._id
+                ) > -1
+                  ? "Applied"
+                  : "Apply"}
+              </Button>
               <Button onClick={() => setIsDrawerOpen(false)}>Close</Button>
             </div>
           </DrawerTitle>

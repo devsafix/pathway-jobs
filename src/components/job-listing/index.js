@@ -33,7 +33,11 @@ const JobListing = ({
       <div className="grid grid-cols-3 gap-4">
         {jobListForRecruiter &&
           jobListForRecruiter.map((job) => (
-            <RecruiterJobCard key={job._id} job={job} />
+            <RecruiterJobCard
+              key={job._id}
+              job={job}
+              jobApplicationList={jobApplicationList}
+            />
           ))}
         {jobListForCandidate &&
           jobListForCandidate.map((job) => (
