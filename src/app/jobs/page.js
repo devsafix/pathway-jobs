@@ -19,7 +19,7 @@ const JobsPage = async () => {
         <JobListing
           user={JSON.parse(JSON.stringify(user))}
           profileInfo={profileInfo}
-          jobList={jobListForCandidate}
+          jobListForCandidate={jobListForCandidate}
         />
       </div>
     );
@@ -30,7 +30,7 @@ const JobsPage = async () => {
       <JobListing
         user={JSON.parse(JSON.stringify(user))}
         profileInfo={profileInfo}
-        jobList={jobListForRecruiter}
+        jobListForRecruiter={jobListForRecruiter}
       />
     </div>
   );

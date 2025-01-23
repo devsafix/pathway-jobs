@@ -1,18 +1,18 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 
 import PostNewJob from "../post-new-job";
 import { Button } from "../ui/button";
+import CandidateJobCard from "../candidate-job-card";
+import RecruiterJobCard from "../recruiter-job-card";
 
-const JobListing = ({ user, profileInfo, jobList }) => {
+const JobListing = ({
+  user,
+  profileInfo,
+  jobListForRecruiter,
+  jobListForCandidate,
+}) => {
   return (
     <div>
       <div className="my-10 pb-3 flex justify-between items-center border-b-4">
@@ -30,20 +30,14 @@ const JobListing = ({ user, profileInfo, jobList }) => {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
-        {jobList.map((job) => (
-          <Card key={job._id}>
-            <CardHeader>
-              {/* add one icon also */}
-              <CardTitle>{job.title}</CardTitle>
-              <CardDescription>{job.description}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>{job.location}</p>
-              <p>{job.experience}</p>
-              <Button className="mt-5">10 Applicants</Button>
-            </CardContent>
-          </Card>
-        ))}
+        {jobListForRecruiter &&
+          jobListForRecruiter.map((job) => (
+            <RecruiterJobCard key={job._id} job={job} />
+          ))}
+        {jobListForCandidate &&
+          jobListForCandidate.map((job) => (
+            <CandidateJobCard key={job._id} job={job} />
+          ))}
       </div>
     </div>
   );
