@@ -49,7 +49,23 @@ const CandidateJobCard = ({ job }) => {
               <Button onClick={() => setIsDrawerOpen(false)}>Close</Button>
             </div>
           </DrawerTitle>
-          <DrawerDescription>{job.description}</DrawerDescription>
+          <DrawerDescription className="flex items-center gap-2">
+            {job.description}
+            {job.location}
+          </DrawerDescription>
+          <div>
+            <p>experience: {job.experience}</p>
+          </div>
+          <div>
+            <p>{job.type}</p>
+          </div>
+          <div>
+            <p>
+              {job?.skills?.spilt(",").map((skill) => (
+                <h2>{skill}</h2>
+              ))}
+            </p>
+          </div>
         </DrawerHeader>
       </DrawerContent>
     </Drawer>
