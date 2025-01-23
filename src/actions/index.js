@@ -55,3 +55,9 @@ export const fetchApplicationsForRecruiter = async (id) => {
   return JSON.parse(JSON.stringify(result));
 };
 
+// get applications for candidate action
+export const fetchApplicationsForCandidate = async (id) => {
+  await connectToDB();
+  const result = await Application.find({ candidateUserId: id });
+  return JSON.parse(JSON.stringify(result));
+};
