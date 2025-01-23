@@ -61,3 +61,10 @@ export const fetchApplicationsForRecruiter = async (id) => {
   const result = await Application.find({ recruiterUserId: id });
   return JSON.parse(JSON.stringify(result));
 };
+
+// get candidate details by candidate id
+export const getCandidateDetailsById = async (id) => {
+  await connectToDB();
+  const result = await Profile.findOne({ userId: id });
+  return JSON.parse(JSON.stringify(result));
+};
