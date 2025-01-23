@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 
 import PostNewJob from "../post-new-job";
+import { Button } from "../ui/button";
 
 const JobListing = ({ user, profileInfo, jobList }) => {
   return (
@@ -32,12 +33,14 @@ const JobListing = ({ user, profileInfo, jobList }) => {
         {jobList.map((job) => (
           <Card key={job._id}>
             <CardHeader>
+              {/* add one icon also */}
               <CardTitle>{job.title}</CardTitle>
               <CardDescription>{job.description}</CardDescription>
             </CardHeader>
             <CardContent>
               <p>{job.location}</p>
               <p>{job.experience}</p>
+              <Button className="mt-5">10 Applicants</Button>
             </CardContent>
           </Card>
         ))}
