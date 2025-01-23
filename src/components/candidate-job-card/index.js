@@ -21,9 +21,30 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useState } from "react";
+import { applyForJob } from "@/actions";
 
-const CandidateJobCard = ({ job }) => {
+const CandidateJobCard = ({ job, profileInfo, jobApplicationList }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  console.log(jobApplicationList);
+  
+
+  const handleJobApply = async () => {
+    await applyForJob(
+      {
+        recruiterUserId: job?.recruiterId,
+        candidateUserId: profileInfo?.userId,
+        name: profileInfo?.candidateInfo?.name,
+        email: profileInfo?.email,
+        status: ["Applied"],
+        jobId: job?._id,
+        jobAppliedDate: new Date().toLocaleDateString(),
+      },
+      "/jobs"
+    );
+    setIsDrawerOpen(false);
+  };
+
   return (
     <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
       <Card>
@@ -45,7 +66,7 @@ const CandidateJobCard = ({ job }) => {
           <DrawerTitle className="text-2xl font-bold flex justify-between items-center">
             {job.title}
             <div className="flex items-center gap-2">
-              <Button>Apply</Button>
+              <Button onClick={handleJobApply}>Apply</Button>
               <Button onClick={() => setIsDrawerOpen(false)}>Close</Button>
             </div>
           </DrawerTitle>
@@ -60,11 +81,11 @@ const CandidateJobCard = ({ job }) => {
             <p>{job.type}</p>
           </div>
           <div>
-            <p>
-              {job?.skills?.spilt(",").map((skill) => (
-                <h2>{skill}</h2>
+            <div>
+              {job?.skills?.split(",").map((skill, idx) => (
+                <h2 key={idx}>{skill}</h2>
               ))}
-            </p>
+            </div>
           </div>
         </DrawerHeader>
       </DrawerContent>

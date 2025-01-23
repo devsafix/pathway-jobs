@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import PostNewJob from "../post-new-job";
 import { Button } from "../ui/button";
 import CandidateJobCard from "../candidate-job-card";
@@ -12,7 +10,10 @@ const JobListing = ({
   profileInfo,
   jobListForRecruiter,
   jobListForCandidate,
+  jobApplicationList,
 }) => {
+  console.log(jobApplicationList);
+
   return (
     <div>
       <div className="my-10 pb-3 flex justify-between items-center border-b-4">
@@ -36,7 +37,12 @@ const JobListing = ({
           ))}
         {jobListForCandidate &&
           jobListForCandidate.map((job) => (
-            <CandidateJobCard key={job._id} job={job} />
+            <CandidateJobCard
+              key={job._id}
+              job={job}
+              profileInfo={profileInfo}
+              jobApplicationList={jobApplicationList}
+            />
           ))}
       </div>
     </div>

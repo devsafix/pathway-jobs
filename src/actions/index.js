@@ -42,22 +42,22 @@ export const fetchJobsForCandidate = async () => {
 };
 
 // apply for job action
-export const applyForJob = async (formData) => {
+export const applyForJob = async (formData, pathToRevalidate) => {
   await connectToDB();
   await Application.create(formData);
-};
-
-
-// get applications for recruiter action
-export const fetchApplicationsForRecruiter = async (id) => {
-  await connectToDB();
-  const result = await Application.find({ recruiterUserId: id });
-  return JSON.parse(JSON.stringify(result));
+  revalidatePath(pathToRevalidate);
 };
 
 // get applications for candidate action
 export const fetchApplicationsForCandidate = async (id) => {
   await connectToDB();
   const result = await Application.find({ candidateUserId: id });
+  return JSON.parse(JSON.stringify(result));
+};
+
+// get applications for recruiter action
+export const fetchApplicationsForRecruiter = async (id) => {
+  await connectToDB();
+  const result = await Application.find({ recruiterUserId: id });
   return JSON.parse(JSON.stringify(result));
 };
