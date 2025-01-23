@@ -1,6 +1,7 @@
 "use server";
 
 import connectToDB from "@/database";
+import Application from "@/models/application";
 import Job from "@/models/job";
 import Profile from "@/models/profile";
 import { revalidatePath } from "next/cache";
@@ -39,3 +40,10 @@ export const fetchJobsForCandidate = async () => {
   const result = await Job.find();
   return JSON.parse(JSON.stringify(result));
 };
+
+// apply for job action
+export const applyForJob = async (formData) => {
+  await connectToDB();
+  await Application.create(formData);
+};
+
