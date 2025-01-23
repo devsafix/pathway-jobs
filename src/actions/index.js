@@ -47,3 +47,11 @@ export const applyForJob = async (formData) => {
   await Application.create(formData);
 };
 
+
+// get applications for recruiter action
+export const fetchApplicationsForRecruiter = async (id) => {
+  await connectToDB();
+  const result = await Application.find({ recruiterUserId: id });
+  return JSON.parse(JSON.stringify(result));
+};
+
