@@ -68,3 +68,32 @@ export const getCandidateDetailsById = async (id) => {
   const result = await Profile.findOne({ userId: id });
   return JSON.parse(JSON.stringify(result));
 };
+
+// update job application action
+export const updateJobApplication = async (data, pathToRevalidate) => {
+  await connectToDB();
+  const {
+    recruiterUserId,
+    candidateUserId,
+    name,
+    email,
+    status,
+    jobId,
+    jobAppliedDate,
+    _id,
+  } = data;
+  const result = await Application.findOneAndUpdate(
+    { _id: _id },
+    {
+      recruiterUserId,
+      candidateUserId,
+      name,
+      email,
+      status,
+      jobId,
+      jobAppliedDate,
+    },
+    { new: true }
+  );
+  revalidatePath(pathToRevalidate);
+};
