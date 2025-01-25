@@ -1,4 +1,5 @@
 import {
+  createFilterCategoryAction,
   fetchApplicationsForCandidate,
   fetchApplicationsForRecruiter,
   fetchJobsForCandidate,
@@ -33,6 +34,9 @@ const JobsPage = async () => {
     );
   }
 
+  const fetchFilterCategories = await fetchJobsForCandidate();
+  
+
   return (
     <div>
       <JobListing
@@ -40,6 +44,7 @@ const JobsPage = async () => {
         profileInfo={profileInfo}
         jobListForRecruiter={jobListForRecruiter}
         jobApplicationList={jobApplicationList}
+        filterCategories={fetchFilterCategories}
       />
     </div>
   );

@@ -26,7 +26,7 @@ import { applyForJob } from "@/actions";
 const CandidateJobCard = ({ job, profileInfo, jobApplicationList }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  console.log(jobApplicationList);
+
 
   const handleJobApply = async () => {
     await applyForJob(
